@@ -9,7 +9,7 @@
 		])
 		.config(config);
 
-	function config($routeProvider) {
+	function config($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/', {
 				templateUrl: 'main/main.html',
@@ -19,5 +19,7 @@
 			.otherwise({
 				redirectTo: '/'
 			});
+
+		$locationProvider.hashPrefix('');
 	}
 })();
