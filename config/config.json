@@ -1,0 +1,9 @@
+{
+    "validCategories": [
+        "PERSON",
+        "PLACE",
+        "ANIMAL",
+        "COMPUTER",
+        "OTHER"
+    ]
+}

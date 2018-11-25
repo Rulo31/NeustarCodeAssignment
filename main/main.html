@@ -1,0 +1,80 @@
+<section ng-controller="MainController as vm">
+    <div class="row">
+        <div class="col-md-12" ng-show="vm.errors.length > 0">
+            <h4>Errors</h4>
+            <div class="alert alert-danger">
+                <ul>
+                    <li ng-repeat="error in vm.errors"> {{error}} </li>
+                </ul>        
+            </div>
+        </div>
+        <div class="col-md-12" ng-show="vm.warnings.length > 0">
+            <h4>Warnings</h4>
+            <div class="alert alert-warning">
+                <ul>
+                    <li ng-repeat="warning in vm.warnings"> {{warning}} </li>
+                </ul>      
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-show="!vm.isLoading && !vm.resultsReady">
+        <form>
+            <div class="form-group col-md-12">
+                <div class="text-area">
+                    <textarea rows="20" cols="50" class="textarea-line-numbers form-control" ng-model="vm.json" ></textarea>
+                </div>    
+            </div>
+            <div class="form-group col-md-12">
+                <button type="button" class="btn btn-primary pull-right" ng-click="vm.submitJSON(vm.json, vm.validCategories)">Submit JSON</button>
+            </div>
+        </form>
+    </div>
+    <div class="row" ng-show="vm.isLoading">
+        <div class="col-md-offset-3 col-md-6 text-center">
+            <div class="progress" style="margin: 5px;">
+                <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%">                    </div>
+            </div>
+            <h4>Please wait...</h4>
+        </div>
+    </div>
+    <div class="row" ng-show="!vm.isLoading && vm.resultsReady">
+        <hr>
+        <div class="col-md-6">
+            <h3>Category Count</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Category</th>
+                    <th>Count</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cc in vm.categoryCount">
+                    <td>{{cc.category}}</td>
+                    <td>{{cc.count}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3>Category First Ocurrence</h3>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>Category</th>
+                    <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="cfo in vm.categoryFirstOcurrence">
+                    <td>{{cfo.category}}</td>
+                    <td>{{cfo.value}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="form-group col-md-12">
+            <button type="button" class="btn btn-primary pull-right" ng-click="vm.back()">Back </button>
+        </div>
+    </div>
+</section>
