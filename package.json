@@ -4,7 +4,7 @@
   "description": "Neustar Code Assignment by Raul Gomez",
   "main": "index.html",
   "scripts": {
-    "start": "http-server .",
+    "start": "http-server . -o",
     "test": "karma start"
   },
   "author": "Raul Gomez",
